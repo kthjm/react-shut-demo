@@ -1,0 +1,26 @@
+{
+  "development": {
+    "put": "chin/.src",
+    "out": ".local",
+    "process": {},
+    "weirs": [
+      ["embed", ["jsEmbed", "utf8"]]
+    ],
+    "ignore": {
+      "targets": ["favicons"]
+    }
+  },
+  "production": {
+    "put": "chin/.src",
+    "out": ".site",
+    "process": {},
+    "weirs": [],
+    "weirs:old": [
+      ["embed", ["jsEmbed", "utf8"]],
+      ["favicons", "pngToFavicons"]
+    ],
+    "ignore": {
+      "targets": ["favicons", "embed/onerror.js"]
+    }
+  }
+}

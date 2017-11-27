@@ -1,0 +1,62 @@
+{
+  "scripts": {
+    "format": "prettier --write **/*.js",
+    "dev:chin": "chin development -v -c chin/config.json -p chin/preset.js",
+    "dev:dll": "webpack --config app/webpack.config.dll.babel.js",
+    "dev:pre": "run-p dev:chin dev:dll",
+    "dev": "webpack-dev-server --config app/webpack.config.dev.babel.js",
+    "pro:chin": "chin production -v -c chin/config.json -p chin/preset.js",
+    "pro:pack": "webpack -p --config app/webpack.config.pro.babel.js",
+    "pro": "run-p pro:chin pro:pack",
+    "pro:serve": "http-server .site -a localhost -p 7000 -o -c-1"
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true
+  },
+  "dependencies": {
+    "atra": "^1.1.1",
+    "babel-polyfill": "^6.26.0",
+    "orph": "^1.0.3",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
+    "whatwg-fetch": "^2.0.3"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015-rollup": "^3.0.0",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-react": "^6.24.1",
+    "chin": "^2.1.1",
+    "favicons": "^4.8.6",
+    "flow-bin": "^0.59.0",
+    "flow-typed": "^2.2.1",
+    "fs-extra": "^4.0.2",
+    "http-server": "^0.10.0",
+    "imagemin": "^5.3.1",
+    "imagemin-jpegtran": "^5.0.2",
+    "imagemin-pngquant": "^5.0.1",
+    "npm-run-all": "^4.1.2",
+    "prettier": "^1.8.2",
+    "pug": "^2.0.0-rc.2",
+    "rehype": "^5.0.0",
+    "rehype-format": "^2.2.0",
+    "rehype-react": "^3.0.1",
+    "remark": "^8.0.0",
+    "remark-rehype": "^2.0.1",
+    "rollup": "^0.52.0",
+    "rollup-plugin-babel": "^3.0.2",
+    "rollup-plugin-commonjs": "^8.2.6",
+    "rollup-plugin-json": "^2.3.0",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-uglify": "^2.0.1",
+    "uglify-es": "^3.2.0",
+    "unified": "^6.1.6",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.4",
+    "webpack-merge": "^4.1.0"
+  }
+}
