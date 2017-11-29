@@ -9,7 +9,7 @@ export default {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: [nodeModulesPath],
         use: [`babel-loader?cacheDirectory`]
       }
