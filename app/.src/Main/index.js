@@ -115,6 +115,7 @@ const listeners = [
 
   ['SHUT_ON_COME', react =>
     (e) => {
+      console.log("onCome");
       const nowType = react.state.choised
       return react.state[nowType] === "shut" && react.setState({ [nowType]: true })
     }
@@ -122,6 +123,7 @@ const listeners = [
 
   ['SHUT_ON_QUIT', react =>
     (e) => {
+      console.log("onQuit");
       const nowType = react.state.choised
       return react.setState({ [nowType]: false })
     }

@@ -5037,7 +5037,7 @@ react-dom@^16.1.1:
 
 "react-shut@https://github.com/kthjm/react-shut#dev":
   version "0.0.0"
-  resolved "https://github.com/kthjm/react-shut#cd071381a85233707e186e35504ab5058a265e43"
+  resolved "https://github.com/kthjm/react-shut#4254afd79ce6ca20331b8b41ad9bb0631f8fa20d"
   dependencies:
     atra "^1.1.1"
 

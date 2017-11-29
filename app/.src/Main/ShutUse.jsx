@@ -1,6 +1,8 @@
 import React from 'react'
 import Atra from 'atra'
 import * as Shuts from 'react-shut'
+// import * as Shuts from '../react-shut/src'
+// import * as Shuts from '../react-shut'
 
 const firstUpper = (str) => str.slice(0,1).toUpperCase() + str.slice(1)
 
