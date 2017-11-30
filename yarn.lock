@@ -5035,15 +5035,9 @@ react-dom@^16.1.1:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-"react-shut@https://github.com/kthjm/react-shut":
-  version "0.0.0"
-  resolved "https://github.com/kthjm/react-shut#09d4b7bc63e857ea4a6e94a8571726b2616b4eef"
-  dependencies:
-    atra "^1.1.1"
-
-"react-shut@https://github.com/kthjm/react-shut#dev":
-  version "0.0.0"
-  resolved "https://github.com/kthjm/react-shut#4254afd79ce6ca20331b8b41ad9bb0631f8fa20d"
+react-shut@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/react-shut/-/react-shut-0.0.1.tgz#118940e2282685a443034eee30b5607da10afb84"
   dependencies:
     atra "^1.1.1"
 

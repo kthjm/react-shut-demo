@@ -22,7 +22,7 @@
     "orph": "^1.0.3",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
-    "react-shut": "https://github.com/kthjm/react-shut",
+    "react-shut": "^0.0.1",
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
