@@ -2,7 +2,11 @@ import React from 'react'
 import Atra from 'atra'
 import IndexButton from './IndexButton.jsx'
 import ShutButton from './ShutButton.jsx'
-import ShutUse from './ShutUse.jsx'
+import ShutContent from './ShutContent.jsx'
+import * as Shuts from 'react-shut'
+
+const types = ["right", "left", "bottom", "top"]
+const firstUpper = (str) => str.slice(0,1).toUpperCase() + str.slice(1)
 
 export default class Main extends React.Component {
   constructor(props) {
@@ -23,10 +27,6 @@ export default class Main extends React.Component {
   }
 
   render() {
-    const shutbutton = this.createShutButton()
-    const shutcontents = this.createShutContents()
-    const indexbuttons = this.createIndexButtons()
-
     const ref = this.rootref
     const rootHeight = this.nowRootHeight || 0
     const isMobile = this.props.isMobile
@@ -35,15 +35,15 @@ export default class Main extends React.Component {
       <div {...a('ROOT', { ref })}>
         <div {...a('MAIN', { style: { height: rootHeight * 0.88 } })}>
           <span {...a('SIGN')}>{`from ${this.state.choised}`}</span>
-          {shutbutton}
-          {shutcontents}
+          {this.createShutButton()}
+          {this.createShutContents()}
         </div>
         <div {...a('UNDER', { style: {
           height: rootHeight * 0.12,
           width: !isMobile && "40%",
           float: !isMobile && "right"
         } })}>
-          {indexbuttons}
+          {this.createIndexButtons()}
         </div>
       </div>
     )
@@ -72,7 +72,7 @@ export default class Main extends React.Component {
   }
 
   createIndexButtons() {
-    return ["right", "left", "bottom", "top"].map((type, index) =>
+    return types.map((type, index) =>
       <IndexButton key={index} {...{
         listener: this.listeners['INDEX_SWITCH'],
         listenerType: this.listenerType(),
@@ -87,17 +87,30 @@ export default class Main extends React.Component {
     const { choised } = this.state
     const shut = this.state[choised]
 
-    return shut && <ShutUse {...{
-      choisedKey: choised,
-      mountWithShut: shut === "shut",
-      onCome: this.listeners['SHUT_ON_COME'],
-      onQuit: this.listeners['SHUT_ON_QUIT'],
-    }} />
+    if(shut){
+      const componentName = `ShutFrom${firstUpper(choised)}`
+      const Shut = Shuts[componentName]
+      return(
+        <Shut {...{
+          Quit,
+          // duration: "3s",
+          background: "rgb(31, 31, 42)",
+          // touchWidthRatio: 0.8,
+          // quitWidthRatio: 0.2,
+          mountWithShut: shut === "shut",
+          onCome: this.listeners['SHUT_ON_COME'],
+          onQuit: this.listeners['SHUT_ON_QUIT']
+        }}>
+          <ShutContent {...{ componentName }} />
+        </Shut>
+      )
+    }
   }
 }
 
-const listeners = [
+const Quit = ({ fn }) => <button {...a("QUIT", { onClick: fn })}>{"quit"}</button>
 
+const listeners = [
   ['INDEX_SWITCH', react =>
     e => {
       const nowType = react.state.choised
@@ -105,14 +118,12 @@ const listeners = [
       return nowType !== nextType && react.setState({ choised: nextType })
     }
   ],
-
   ['SHUTS_SWITCH', react =>
     () => {
       const nowType = react.state.choised
       return react.setState({ [nowType]: "shut" })
     }
   ],
-
   ['SHUT_ON_COME', react =>
     (e) => {
       console.log("onCome");
@@ -120,7 +131,6 @@ const listeners = [
       return react.state[nowType] === "shut" && react.setState({ [nowType]: true })
     }
   ],
-
   ['SHUT_ON_QUIT', react =>
     (e) => {
       console.log("onQuit");
@@ -128,7 +138,6 @@ const listeners = [
       return react.setState({ [nowType]: false })
     }
   ]
-
 ]
 
 const a = Atra({
@@ -145,15 +154,24 @@ const a = Atra({
   SIGN: {
     style: {
       position: "absolute",
-      top: 8,
-      left: 10,
-      fontSize: 30,
-      color: "gray"
+      top: 30,
+      left: 40,
+      fontSize: 55,
+      color: "#cacaca",
+      letterSpacing: 9
     }
   },
   UNDER: {
     style: {
       background: 'rgba(255, 255, 255, 0.12)'
+    }
+  },
+  QUIT: {
+    style: {
+      position: "absolute",
+      top: 50,
+      right: 50,
+      fontSize: 50
     }
   }
 })

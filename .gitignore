@@ -1,6 +1,5 @@
 .local/
 .site/
-app/.src/react-shut/
 
 # Logs
 logs

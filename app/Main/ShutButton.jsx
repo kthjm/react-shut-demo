@@ -27,7 +27,8 @@ const a = Atra({
       letterSpacing: 20,
       color: "#ffffff",
       backgroundColor: "rgba(0, 0, 0, 0.3)",
-      borderWidth: 5,
+      borderWidth: 8,
+      borderColor: "#242424",
       padding: "6px 40px"
     }
   }
