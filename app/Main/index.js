@@ -93,13 +93,13 @@ export default class Main extends React.Component {
       return(
         <Shut {...{
           Quit,
-          // duration: "3s",
+          // duration: 1,
           background: "rgb(31, 31, 42)",
           // touchWidthRatio: 0.8,
           // quitWidthRatio: 0.2,
           mountWithShut: shut === "shut",
-          onCome: this.listeners['SHUT_ON_COME'],
-          onQuit: this.listeners['SHUT_ON_QUIT']
+          onComeEnd: this.listeners['SHUT_ON_COME'],
+          onQuitEnd: this.listeners['SHUT_ON_QUIT']
         }}>
           <ShutContent {...{ componentName }} />
         </Shut>
@@ -126,14 +126,14 @@ const listeners = [
   ],
   ['SHUT_ON_COME', react =>
     (e) => {
-      console.log("onCome");
+      console.log("onComeEnd");
       const nowType = react.state.choised
       return react.state[nowType] === "shut" && react.setState({ [nowType]: true })
     }
   ],
   ['SHUT_ON_QUIT', react =>
     (e) => {
-      console.log("onQuit");
+      console.log("onQuitEnd");
       const nowType = react.state.choised
       return react.setState({ [nowType]: false })
     }
