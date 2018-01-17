@@ -5043,9 +5043,9 @@ react-dom@^16.2.0:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-react-shut@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/react-shut/-/react-shut-1.0.0.tgz#2134782b3945e65fa5b32cabc05e6a8d2e010d1e"
+react-shut@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-shut/-/react-shut-2.0.0.tgz#4f5594164e110fda98f1da87f27f8006a2dfa68a"
   dependencies:
     atra "^1.1.2"
 

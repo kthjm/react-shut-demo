@@ -93,10 +93,8 @@ export default class Main extends React.Component {
       return(
         <Shut {...{
           Quit,
-          // duration: 1,
+          duration: 0.5,
           background: "rgb(31, 31, 42)",
-          // touchWidthRatio: 0.8,
-          // quitWidthRatio: 0.2,
           mountWithShut: shut === "shut",
           onComeEnd: this.listeners['SHUT_ON_COME'],
           onQuitEnd: this.listeners['SHUT_ON_QUIT']
@@ -126,19 +124,29 @@ const listeners = [
   ],
   ['SHUT_ON_COME', react =>
     (e) => {
-      console.log("onComeEnd");
+      consoleOnComeEnd()
       const nowType = react.state.choised
       return react.state[nowType] === "shut" && react.setState({ [nowType]: true })
     }
   ],
   ['SHUT_ON_QUIT', react =>
     (e) => {
-      console.log("onQuitEnd");
+      consoleOnQuitEnd()
       const nowType = react.state.choised
       return react.setState({ [nowType]: false })
     }
   ]
 ]
+
+const consoleOnComeEnd = () => console.log(`
+  onComeEnd😻
+
+`)
+
+const consoleOnQuitEnd = () => console.log(`
+  onQuitEnd🙀
+
+`)
 
 const a = Atra({
   ROOT: {
